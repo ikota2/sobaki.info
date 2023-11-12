@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f7f2;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.segment {
+  //padding: 10px;
+  // margin-bottom: 10px;
+  flex: 1 1;
+  //background-color: #000;
+}

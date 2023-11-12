@@ -1,0 +1,10 @@
+.App {
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+footer {
+  margin-top: 2px;
+  text-align: center;
+}

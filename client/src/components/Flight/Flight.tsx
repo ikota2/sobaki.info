@@ -39,7 +39,6 @@ const Flight: FC<Props> = memo((
 			<div className={classes.segment}>
 				<div>{stops}</div>
 			</div>
-
 			<div className={classes.segment}>
 				<div>{price ? price + ' ₽' : 'неизвестно'}</div>
 			</div>

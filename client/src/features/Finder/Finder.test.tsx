@@ -1,6 +1,6 @@
 import {render, fireEvent} from "@testing-library/react";
 import Finder from "./Finder";
-import {screen} from '@testing-library/dom'
+import {screen} from '@testing-library/react';
 
 // start works fine
 

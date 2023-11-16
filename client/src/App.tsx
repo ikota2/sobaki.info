@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useLayoutEffect, Suspense } from 'react';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import axios from "axios";
 
 import RailwayMap from "./features/RailwayMap/RailwayMap";
@@ -56,7 +57,7 @@ function App() {
   return (
     <div className="App">
       <Suspense fallback={<Loader />}>
-       <Title currentDate={currentDate} setCurrentDate={setCurrentDate}/>
+        <Title currentDate={currentDate} setCurrentDate={setCurrentDate}/>
       </Suspense>
       <button type="button" onClick={() => setShowMap(!showMap)}>show map</button>
       {!showMap && <Suspense fallback={<Loader />}>

@@ -10,7 +10,6 @@ interface Props {
 }
 
 const Title: FC<Props> = ({currentDate, setCurrentDate}) => {
-
 	const handleSetCurrentDate = () => {
 		if (currentDate === today) {
 			setCurrentDate(tomorrow);
@@ -19,7 +18,6 @@ const Title: FC<Props> = ({currentDate, setCurrentDate}) => {
 		}
 	}
 
-	// spaces ????????
 	return (
 		<header>
 			<h1>
@@ -27,6 +25,7 @@ const Title: FC<Props> = ({currentDate, setCurrentDate}) => {
 				<span
 					onClick={handleSetCurrentDate}
 					className={classes.date}
+					data-testid="value"
 				>{currentDate === today ? ' сегодня' : ' завтра'}</span>
 			</h1>
 		</header>

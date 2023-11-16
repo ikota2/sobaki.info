@@ -8,6 +8,11 @@
 // 	title: "Струнино"
 // }
 
+export interface Params {
+	from: string;
+	to: string;
+}
+
 export interface Settlement {
 	codes: { yandex_code: 'c24461' };
 	title: string;

@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useLayoutEffect, Suspense } from 'react';
 import axios from "axios";
-import dayjs from 'dayjs';
 
 import RailwayMap from "./features/RailwayMap/RailwayMap";
 import Loader from "./components/Loader/Loader";
@@ -9,13 +8,8 @@ import {thnxToYandex} from "./constants/thnxToYandex";
 import {today} from "./constants/dates";
 import {capitalize} from "./helpers/capitalize";
 import {findYaCode} from "./helpers/findYaCode";
-import {AllStations, Status} from "./types";
+import {AllStations, Params, Status} from "./types";
 import './App.css';
-
-export interface Params {
-  from: string;
-  to: string;
-}
 
 const Title = React.lazy(() => import('./features/Title/Title'));
 const Finder = React.lazy(() => import('./features/Finder/Finder'));
@@ -59,16 +53,13 @@ function App() {
     }
   }, [params, currentDate, allStations])
 
-  // const titles: string[] = allStations?.map(({stations}) => stations.map(({title}) => title)).flat();
-// console.log(titles);
-  console.log('👾', dayjs(new Date('2023-04-10T11:42:11.716Z')));
   return (
     <div className="App">
-      <Suspense fallback={<div>Загрузка...</div>}>
+      <Suspense fallback={<Loader />}>
        <Title currentDate={currentDate} setCurrentDate={setCurrentDate}/>
       </Suspense>
       <button type="button" onClick={() => setShowMap(!showMap)}>show map</button>
-      {!showMap && <Suspense fallback={<div>Загрузка...</div>}>
+      {!showMap && <Suspense fallback={<Loader />}>
         <Finder
           setParams={setParams}
           allStations={allStations}
@@ -76,10 +67,9 @@ function App() {
       </Suspense>}
       {showMap && <RailwayMap allStations={allStations} />}
       {status === 'loading' && <Loader />}
-
       {status === 'loaded' &&
         <>
-          <Suspense fallback={<div>Загрузка...</div>}>
+          <Suspense fallback={<Loader />}>
             <Schedule schedule={schedule} currentDate={currentDate} status={status}/>
           </Suspense>
           <footer style={{

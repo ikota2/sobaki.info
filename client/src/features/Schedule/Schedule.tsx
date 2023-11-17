@@ -47,7 +47,7 @@ const Schedule: FC<Props> = memo(({schedule}) => {
         type="button"
         onClick={() => setShowPast(!showPast)}
       >
-        {!showPast ? 'Показать ушедние собаки' : 'Скрыть ушедшие собаки'}
+        {!showPast ? 'Показать ушедшие собаки' : 'Скрыть ушедшие собаки'}
       </button>
       {future.map((segment: Segment, i: number) => {
         return (

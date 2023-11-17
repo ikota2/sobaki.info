@@ -31,9 +31,6 @@ const request = async <T>(
 		setStatus(error);
 		console.log(err);
 	}
-	// finally {
-	// 	if (setSubmitting) setSubmitting(false);
-	// }
 };
 
 export default request;

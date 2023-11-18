@@ -1,6 +1,6 @@
 import React, {FC, memo} from 'react';
 
-import {convertSeconds} from "../../helpers/convertSeconds";
+import {convertSecsToMins} from "../../helpers/convertSecsToMins";
 import {convertDateToHHmm} from "../../helpers/convertDateToHHmm";
 
 import classes from './Flight.module.scss';
@@ -31,7 +31,7 @@ const Flight: FC<Props> = memo((
 				<div>{convertDateToHHmm(departure)}</div>
 			</div>
 			<div className={classes.segment}>
-				<div>{convertSeconds(duration)}</div>
+				<div>{convertSecsToMins(duration)}</div>
 			</div>
 			<div className={classes.segment}>
 				<div>{convertDateToHHmm(arrival)}</div>

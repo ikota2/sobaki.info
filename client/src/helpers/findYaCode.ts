@@ -1,6 +1,6 @@
 import {AllStations} from '../types';
 
-export function findYaCode(title: string, arr: any[]) {
+export function findYaCode(title: string, arr: AllStations[]) {
 	let code = '';
 	for (let line of arr) {
 		for (let station of line.stations) {

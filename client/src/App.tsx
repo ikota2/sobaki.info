@@ -3,7 +3,8 @@ import axios from 'axios';
 
 import RailwayMap from './features/RailwayMap/RailwayMap';
 import Loader from './components/Loader/Loader';
-import {key, thnxToYandex, today, url} from './constants';
+import Footer from './components/Footer/Footer';
+import {key, today, url} from './constants';
 import {capitalize, findYaCode} from './helpers';
 import {AllStations, Params, Status} from './types';
 import './App.css';
@@ -64,14 +65,7 @@ function App() {
           <Suspense fallback={<Loader />}>
             <Schedule schedule={schedule} currentDate={currentDate} status={status}/>
           </Suspense>
-          <footer style={{
-            position: 'relative',
-            left: 0,
-            bottom: 0,
-            width: '100%',
-          }}>
-            <p>{thnxToYandex}</p>
-          </footer>
+          <Footer />
         </>
       }
     </div>

@@ -6,7 +6,7 @@ const port = 3001;
 
 const lines = ['Ленинградское', 'Ярославское', 'Казанское', 'Горьковское', 'Курское', 'Павелецкое', 'Киевское', 'Смоленское', 'Савёловское', 'Рижское', 'МЦД-2', 'МЦД-1'];
 
-function makeObjectsGreat(arr) {
+function categorizeByDirection(arr) {
   const preresult = {};
 
   for (let obj of arr) {
@@ -15,9 +15,9 @@ function makeObjectsGreat(arr) {
     }
     preresult[obj.direction].push({codes: obj.codes, title: obj.title})
   }
-  
+
   const result = [];
-  
+
   for (let key in preresult) {
     const resultInner = {};
     if (!resultInner.direction) {
@@ -31,9 +31,6 @@ function makeObjectsGreat(arr) {
   return result;
 }
 
-
-
-// todo разрешить 3000 сюда заходить 8)
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
@@ -42,11 +39,11 @@ const server = http.createServer((req, res) => {
   res.setHeader('Accept-Encoding', 'gzip');
   res.setHeader('Cache-Control', 'public, max-age=31557600');
 
-res.end(JSON.stringify(makeObjectsGreat(data.countries
+res.end(JSON.stringify(categorizeByDirection(data.countries
   .find((obj) => obj.title === 'Россия').regions
   .map((obj) => obj.settlements)
   .flat()
-  
+
   .map((item) => Object.keys(item)
   .filter(key => key === 'stations')
   .reduce((obj, key) => {
@@ -65,7 +62,7 @@ res.end(JSON.stringify(makeObjectsGreat(data.countries
     return obj;
     }, {})
   )
-  
+
   )));
 
 });

@@ -1,8 +1,10 @@
-.swap {
-  font-size: 16px;
-  font-weight: 700;
+.container {
+  width: 50%;
+  margin: 0 auto;
 }
 
-//.swap:after {
-//  content: '&#x21C6'
-//}
+form {
+  display: grid;
+  grid-template-columns: 4fr 1fr 4fr 1fr;
+  grid-gap: 10px;
+}

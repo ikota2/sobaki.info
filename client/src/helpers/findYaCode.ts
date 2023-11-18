@@ -1,3 +1,5 @@
+import {AllStations} from '../types';
+
 export function findYaCode(title: string, arr: any[]) {
 	let code = '';
 	for (let line of arr) {

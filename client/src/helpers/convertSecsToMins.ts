@@ -1,5 +1,6 @@
 export const convertSecsToMins = (sec: number): string => {
-	const mins = Math.floor(sec / 60);
+	if (sec < 60) return `${sec} сек.`;
 
-	return mins + ' минут';
+	const minutes = Math.floor(sec / 60);
+	return `${minutes} мин.`;
 }

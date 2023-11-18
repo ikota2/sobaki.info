@@ -1,4 +1,4 @@
-const isEmptyData = <T>(data: T): boolean => {
+export const isEmptyData = <T>(data: T): boolean => {
 	const isEmptyArray = Array.isArray(data) && data.length === 0;
 	const isEmptyObject = typeof data === 'object'
 		&& !Array.isArray(data)
@@ -8,6 +8,3 @@ const isEmptyData = <T>(data: T): boolean => {
 
 	return isEmptyArray || isEmptyObject || !data;
 };
-
-
-export default isEmptyData;

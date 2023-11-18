@@ -24,28 +24,29 @@ const Flight: FC<Props> = memo((
 		title,
 		price,
 	}) => {
+	const formattedPrice = price ? price + ' ₽' : 'неизвестно';
 
 	return (
-		<div className={classes.wrapper}>
+		<article className={classes.wrapper}>
 			<div className={classes.segment}>
-				<div>{convertDateToHHmm(departure)}</div>
+				<time>{convertDateToHHmm(departure)}</time>
 			</div>
 			<div className={classes.segment}>
-				<div>{convertSecsToMins(duration)}</div>
+				<time>{convertSecsToMins(duration)}</time>
 			</div>
 			<div className={classes.segment}>
-				<div>{convertDateToHHmm(arrival)}</div>
+				<time>{convertDateToHHmm(arrival)}</time>
 			</div>
 			<div className={classes.segment}>
-				<div>{stops}</div>
+				<span>{stops}</span>
 			</div>
 			<div className={classes.segment}>
-				<div>{price ? price + ' ₽' : 'неизвестно'}</div>
+				<span>{formattedPrice}</span>
 			</div>
 			<div className={classes.segment}>
-				<div>{title}</div>
+				<span>{title}</span>
 			</div>
-		</div>
+		</article>
 	);
 });
 

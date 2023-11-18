@@ -1,6 +1,6 @@
-import isEmptyData from './isEmptyData';
+import {isEmptyData} from '.';
 
-describe('isEmptyData', () => {
+describe('isEmptyData ', () => {
   it('returns true for an empty array', () => {
     expect(isEmptyData([])).toBe(true);
   });

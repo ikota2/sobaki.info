@@ -1,7 +1,7 @@
-import { findYaCode } from './findYaCode';
+import { findYaCode } from '.';
 import { AllStations } from '../types';
 
-describe('findYaCode', () => {
+describe('findYaCode ', () => {
   const mockStations: AllStations[] = [
     {
       direction: 'North',

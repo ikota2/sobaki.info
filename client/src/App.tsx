@@ -1,15 +1,11 @@
 import React, { useEffect, useState, useLayoutEffect, Suspense } from 'react';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
-import axios from "axios";
+import axios from 'axios';
 
-import RailwayMap from "./features/RailwayMap/RailwayMap";
-import Loader from "./components/Loader/Loader";
-import {key} from './constants/key';
-import {thnxToYandex} from "./constants/thnxToYandex";
-import {today} from "./constants/dates";
-import {capitalize} from "./helpers/capitalize";
-import {findYaCode} from "./helpers/findYaCode";
-import {AllStations, Params, Status} from "./types";
+import RailwayMap from './features/RailwayMap/RailwayMap';
+import Loader from './components/Loader/Loader';
+import {key, thnxToYandex, today, url} from './constants';
+import {capitalize, findYaCode} from './helpers';
+import {AllStations, Params, Status} from './types';
 import './App.css';
 
 const Title = React.lazy(() => import('./features/Title/Title'));
@@ -17,20 +13,15 @@ const Finder = React.lazy(() => import('./features/Finder/Finder'));
 const Schedule = React.lazy(() => import('./features/Schedule/Schedule'));
 
 function App() {
-  const [params, setParams] = useState<Params>({from: "", to: ""})
-
+  const [params, setParams] = useState<Params>({from: '', to: ''})
   const [allStations, setAllStations] = useState<AllStations[]>([]);
-
   const [schedule, setSchedule] = useState({});
-
   const [currentDate, setCurrentDate] = useState<string>(today);
-
   const [status, setStatus] = useState<Status>('idle');
-
   const [showMap, setShowMap] = useState(false);
 
   useLayoutEffect(() => {
-    axios.get(`http://127.0.0.1:3001/`)
+    axios.get(`${url}`)
       .then((res) => setAllStations(res.data))
       .catch(e => console.error(e))
   }, [setAllStations]);

@@ -1,13 +1,3 @@
-// export interface Station {
-// 	direction: string;
-//   stations: Station[]
-// }
-
-// interface Station {
-// 	codes: { esr_code: string; yandex_code: string; }
-// 	title: "Струнино"
-// }
-
 export interface Params {
 	from: string;
 	to: string;

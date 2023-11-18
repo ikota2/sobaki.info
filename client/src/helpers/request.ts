@@ -1,4 +1,4 @@
-import isEmptyData from './isEmptyData';
+import {isEmptyData} from '.';
 import { NewStatus, NewStatuses } from '../types';
 
 interface MakeRequestToServer<T> {
@@ -10,7 +10,7 @@ interface MakeRequestToServer<T> {
 
 const { loading, loaded, emptyData, error } = NewStatuses;
 
-const request = async <T>(
+export const request = async <T>(
 	{
 		setStatus,
 		callback,
@@ -32,5 +32,3 @@ const request = async <T>(
 		console.log(err);
 	}
 };
-
-export default request;

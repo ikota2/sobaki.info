@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
-import { convertDateToHHmm } from './convertDateToHHmm';
+import { convertDateToHHmm } from '.';
 
-describe('convertDateToHHmm', () => {
+describe('convertDateToHHmm ', () => {
   it('formats a valid date to HH:mm', () => {
     const date = new Date('2023-01-01T15:30:00');
     expect(convertDateToHHmm(date)).toBe(dayjs(date).format('HH:mm'));

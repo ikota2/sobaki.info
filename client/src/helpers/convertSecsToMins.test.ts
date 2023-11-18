@@ -1,6 +1,6 @@
-import { convertSecsToMins } from './convertSecsToMins';
+import { convertSecsToMins } from '.';
 
-describe('convertSecsToMins', () => {
+describe('convertSecsToMins ', () => {
   it('formats seconds correctly when less than 60', () => {
     expect(convertSecsToMins(30)).toBe('30 сек.');
     expect(convertSecsToMins(59)).toBe('59 сек.');

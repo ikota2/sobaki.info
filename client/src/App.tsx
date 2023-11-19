@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useLayoutEffect, Suspense } from 'react';
+import React, {useEffect, useState, useLayoutEffect, Suspense} from 'react';
 import axios from 'axios';
 
 import RailwayMap from './features/RailwayMap/RailwayMap';
 import Loader from './components/Loader/Loader';
-import Footer from './components/Footer/Footer';
 import {key, today, url} from './constants';
 import {capitalize, findYaCode} from './helpers';
 import {AllStations, Params, Status} from './types';
@@ -12,6 +11,7 @@ import './App.css';
 const Title = React.lazy(() => import('./features/Title/Title'));
 const Finder = React.lazy(() => import('./features/Finder/Finder'));
 const Schedule = React.lazy(() => import('./features/Schedule/Schedule'));
+const Footer = React.lazy(() => import('./components/Footer/Footer'));
 
 function App() {
   const [params, setParams] = useState<Params>({from: '', to: ''})
@@ -51,7 +51,7 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Title currentDate={currentDate} setCurrentDate={setCurrentDate}/>
       </Suspense>
-      <button type="button" onClick={() => setShowMap(!showMap)}>show map</button>
+      <button type="button" onClick={() => setShowMap(!showMap)}>Показать станции по лайнам</button>
       {!showMap && <Suspense fallback={<Loader />}>
         <Finder
           setParams={setParams}
@@ -60,12 +60,15 @@ function App() {
       </Suspense>}
       {showMap && <RailwayMap allStations={allStations} />}
       {status === 'loading' && <Loader />}
+      {status === 'empty' && <span>Ничего не найдено</span>}
       {status === 'loaded' &&
         <>
           <Suspense fallback={<Loader />}>
             <Schedule schedule={schedule} currentDate={currentDate} status={status}/>
           </Suspense>
-          <Footer />
+          <Suspense fallback={<Loader />}>
+            <Footer />
+          </Suspense>
         </>
       }
     </div>
